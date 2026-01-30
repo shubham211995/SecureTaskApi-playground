@@ -12,6 +12,7 @@ builder.Services.AddSingleton(sp =>
 
 // DI
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<AuthService>();
 
 // JWT Authentication
