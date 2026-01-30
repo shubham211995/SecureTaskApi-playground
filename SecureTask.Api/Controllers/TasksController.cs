@@ -52,4 +52,19 @@ public class TasksController : ControllerBase
     {
         return Ok(await _taskRepository.GetAllAsync());
     }
+
+    [HttpPut("{id}")]
+    [Authorize(Policy = "TaskOwner")]
+    public async Task<IActionResult> Update(string id, CreateTaskRequest request)
+    {
+        var task = await _taskRepository.GetByIdAsync(id);
+        if (task == null) return NotFound();
+    
+        task.Title = request.Title;
+        task.Description = request.Description;
+    
+        await _taskRepository.UpdateAsync(task);
+        return Ok(task);
+    }
+
 }

@@ -14,7 +14,13 @@ builder.Services.AddSingleton(sp =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("TaskOwner", policy =>
+        policy.Requirements.Add(new TaskOwnerRequirement()));
+});
 
+builder.Services.AddScoped<IAuthorizationHandler, TaskOwnerHandler>();
 // JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
