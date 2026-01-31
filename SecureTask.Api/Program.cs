@@ -11,6 +11,7 @@ builder.Services.AddSingleton(sp =>
         Microsoft.Extensions.Options.IOptions<MongoSettings>>().Value);
 
 // DI
+builder.Services.AddSingleton<IMongoDbContext, MongoDbContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<AuthService>();
