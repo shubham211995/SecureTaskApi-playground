@@ -9,6 +9,10 @@ public class CustomWebApplicationFactory
     {
         builder.ConfigureServices(services =>
         {
+            services.RemoveAll<IMongoClient>();
+
+            services.AddSingleton<IMongoClient>(
+                new MongoClient("mongodb://localhost:27017"));
         });
     }
 }

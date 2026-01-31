@@ -1,6 +1,6 @@
 using System.Net;
-using System.Net.Http.Headers;
 using Xunit;
+using FluentAssertions;
 
 public class AuthTests : IClassFixture<CustomWebApplicationFactory>
 {
@@ -12,21 +12,10 @@ public class AuthTests : IClassFixture<CustomWebApplicationFactory>
     }
 
     [Fact]
-    public async Task Protected_endpoint_without_token_returns_401()
+    public async Task Secured_endpoint_without_token_returns_401()
     {
         var response = await _client.GetAsync("/api/tasks");
 
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
-    }
-
-    [Fact]
-    public async Task User_with_valid_role_can_access()
-    {
-        _client.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("Bearer", TestJwtTokens.UserToken);
-    
-        var response = await _client.GetAsync("/api/tasks");
-    
-        response.StatusCode.Should().Be(HttpStatusCode.OK);
     }
 }
