@@ -1,6 +1,8 @@
 using System.Net;
 using Xunit;
 using FluentAssertions;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 public class AuthTests : IClassFixture<CustomWebApplicationFactory>
 {

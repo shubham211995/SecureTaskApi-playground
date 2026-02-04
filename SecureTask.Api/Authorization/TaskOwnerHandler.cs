@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using SecureTask.Domain.Interfaces;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 namespace SecureTask.Api.Authorization;

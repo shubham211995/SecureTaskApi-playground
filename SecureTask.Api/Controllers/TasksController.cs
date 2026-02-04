@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SecureTask.Api.DTOs;
 using SecureTask.Domain.Entities;
 using SecureTask.Domain.Interfaces;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 namespace SecureTask.Api.Controllers;

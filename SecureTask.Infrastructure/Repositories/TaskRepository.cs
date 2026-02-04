@@ -1,7 +1,6 @@
 using MongoDB.Driver;
 using SecureTask.Domain.Entities;
 using SecureTask.Domain.Interfaces;
-using SecureTask.Infrastructure.Mongo;
 
 namespace SecureTask.Infrastructure.Repositories;
 

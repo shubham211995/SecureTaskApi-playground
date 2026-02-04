@@ -1,4 +1,5 @@
 using MongoDB.Driver;
+using SecureTask.Domain.Entities;
 
 public interface IMongoDbContext
 {
