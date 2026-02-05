@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SecureTask.Api.DTOs;
 using SecureTask.Api.Services;
-using SecureTask.Domain.Entities;
-using SecureTask.Domain.Interfaces;
 
 namespace SecureTask.Api.Controllers;
 
