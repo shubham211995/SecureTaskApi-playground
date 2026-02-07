@@ -44,9 +44,7 @@ public class AuthService
             issuer: _configuration["Jwt:Issuer"],
             audience: _configuration["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(
-                int.Parse(_configuration["Jwt:ExpireMinutes"]!)
-            ),
+            expires: DateTime.UtcNow.AddMinutes(30),
             signingCredentials: creds
         );
 
