@@ -9,8 +9,8 @@ public class MongoDbContext : IMongoDbContext
 
     public MongoDbContext(IConfiguration config)
     {
-        var client = new MongoClient(config["MongoDb:ConnectionString"]);
-        var db = client.GetDatabase(config["MongoDb:Database"]);
+        var client = new MongoClient(config["MongoSettings:ConnectionString"]);
+        var db = client.GetDatabase(config["MongoSettings:DatabaseName"]);
 
         Tasks = db.GetCollection<TaskItem>("Tasks");
         Users = db.GetCollection<User>("Users");
