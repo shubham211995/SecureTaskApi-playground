@@ -1,17 +1,25 @@
 using MongoDB.Driver;
+using SecureTask.Domain.Entities;
 using SecureTask.Domain.Interfaces;
 
 public class UserRepository : IUserRepository
 {
-    //private readonly IMongoCollection<User> _users;
+    private readonly IMongoCollection<User> _users;
 
-    public Task CreateAsync(User user)
+    public UserRepository(IMongoDbContext context)
     {
-        throw new NotImplementedException();
+        _users = context.Users;
     }
 
-    public Task<User?> GetByEmailAsync(string email)
+    public async Task CreateAsync(User user)
     {
-        throw new NotImplementedException();
+        await _users.InsertOneAsync(user);
+    }
+
+    public async Task<User?> GetByEmailAsync(string email)
+    {
+        return await _users
+            .Find(u => u.Email == email)
+            .FirstOrDefaultAsync();
     }
 }
